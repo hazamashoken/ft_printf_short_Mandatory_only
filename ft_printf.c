@@ -6,7 +6,7 @@
 /*   By: tliangso <earth78203@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:10:18 by tliangso          #+#    #+#             */
-/*   Updated: 2022/12/21 14:43:17 by tliangso         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:26:05 by tliangso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_putnbr(int64_t n, int base, char *charset, int *len)
 	*len += write(1, &charset[n % base], 1);
 }
 
-void	ft_putptr(uintptr_t n, int base, char *charset, int *len)
+void	ft_putptr(uintptr_t n, uintptr_t base, char *charset, int *len)
 {
 	if (n >= base)
 		ft_putnbr(n / base, base, charset, len);
@@ -55,8 +55,6 @@ void	ft_putptr(uintptr_t n, int base, char *charset, int *len)
 
 int	eval_format(const char *format, va_list ap, int len, int i)
 {
-	char	*str;
-
 	if (format[i] == 'c')
 		len += ft_print_str(NULL, va_arg(ap, int), 0);
 	else if (format[i] == 's')
