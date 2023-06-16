@@ -16,22 +16,14 @@ int	ft_print_str(char *str, char c, int mode)
 {
 	int	len;
 
+	len = -1;
+	if (!str)
+		return (write(1, "(null)", 6));
 	if (mode)
-	{
-		if (str)
-		{
-			len = 0;
-			while (str[len++])
-				;
-			return (write(1, str, len - 1));
-		}
-		else
-			return (write(1, "(null)", 6));
-	}
-	else
-	{
 		return (write(1, &c, 1));
-	}
+	while (str[++len])
+		;
+	return (write(1, str, len));
 }
 
 void	ft_putnbr(int64_t n, int base, char *charset, int *len)
